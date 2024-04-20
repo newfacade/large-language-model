@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: llama
+- file: llama2
+- file: instruct-gpt
+- file: cruxeval
+- file: dpo
+- file: rso
+- file: dpop
+- file: magic
+- file: wizardlm
+- file: lora
+- file: alphacode
+- file: alphacode2
+- file: gold
+- file: alphacodium
+- file: weak-to-strong
+- file: scaling-law
