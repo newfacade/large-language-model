@@ -442,7 +442,7 @@ computed by applying Generalized Advantage Estimation (GAE), based on the reward
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>In PPO, a value function needs to
-be trained alongside the policy model and to mitigate over-optimization of the reward model (this is what the critic do).<br>
+be trained alongside the policy model and to mitigate over-optimization of the reward model.<br>
 While in the LLM context, usually only the last token is assigned a
 reward score by the reward model, which may complicate the training of a value function that is
 accurate at each token.<br>
@@ -472,6 +472,21 @@ following unbiased estimator:</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{D}_{KL}[\pi_{\theta}||\pi_{ref}] = \frac{\pi_{\text{ref}}(o_{i,t}|q, o_{i}&lt;t)}{\pi_{\theta}(o_{i,t}|q,o_{i}&lt;t)} - \log\frac{\pi_{\text{ref}}(o_{i,t}|q, o_{i}&lt;t)}{\pi_{\theta}(o_{i,t}|q,o_{i}&lt;t)} - 1,\]</div>
 <p>which is guaranteed to be positive.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A good estimator is unbiased (it has the right mean) and has low variance.<br>
+Since:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{E}_{x\sim P}\left[\frac{Q(x)}{P(x)} - 1\right] =&amp; \sum_{x}P(x)(\frac{Q(x)}{P(x)} - 1)\\
+=&amp; \sum_{x}Q(x)- \sum_{x}P(x) \\
+=&amp; 1 - 1 \\
+=&amp; 0
+\end{aligned}
+\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(\mathbb{E}_{x\sim P}\left[\frac{Q(x)}{P(x)} - \log\frac{Q(x)}{P(x)}1\right]\)</span> is an unbiased estimator of the KL divergence.</p>
+</div>
 </section>
 <section id="outcome-supervision-rl-with-grpo">
 <h2>Outcome Supervision RL with GRPO<a class="headerlink" href="#outcome-supervision-rl-with-grpo" title="Permalink to this heading">#</a></h2>
@@ -485,7 +500,11 @@ the output as the normalized reward:</p>
 \[\hat{A}_{i,t} = \frac{r_i - \text{mean}(\mathbf{r})}{\text{std}(\mathbf{r})}.\]</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>GRPO 使用多次采样替代 Critic 网络来计算 baseline，但保留了 PPO 中一些先进的特性，比如 importance sampling 和 clip。</p>
+<p>GRPO 的优势:<br></p>
+<ol class="arabic simple">
+<li><p>没有 critic model，省资源。<br></p></li>
+<li><p>Group by query，学同一个 query 中相对好的 response，query 间相互隔开。不会出现只学那些简单且 reward 高的 query 的情况。</p></li>
+</ol>
 </div>
 </section>
 <section id="process-supervision-rl-with-grpo">
@@ -521,9 +540,12 @@ new reward model.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <ol class="arabic simple">
-<li><p>GRPO 相比 PPO 的效果? MC sampling 会不会使得训练变得很慢？</p></li>
+<li><p>GRPO 相比 PPO 的效果? Monte-Carlo sampling 会不会使得训练变得很慢？</p></li>
+<li><p>KL 散度直接放在 loss 里和放在 reward 里的区别？</p></li>
 <li><p>Outcome supervision or Process supervision?</p></li>
+<li><p>How to train process reward model?</p></li>
 <li><p>Iterative RL with GRPO 的效果？</p></li>
+<li><p>Group by query + Monte-Carlo sampling + critic model 会不会更好。</p></li>
 </ol>
 </div>
 </section>
