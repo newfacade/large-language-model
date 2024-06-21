@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>AlphaCode 2 &#8212; My sample book</title>
+    <title>MBPP &#8212; My sample book</title>
   
   
   
@@ -62,9 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'code_model/alphacode2';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'eval/mbpp';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TACO" href="taco.html" />
+    <link rel="prev" title="Magicoder" href="../dataset/magic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,14 +161,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../base_model/llama3.html">Llama3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/wizard.html">WizardCoder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/magic.html">Magicoder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../eval/mbpp.html">MBPP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../eval/taco.html">TACO</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">MBPP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taco.html">TACO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rlhf/grpo.html">Group Relative Policy Optimization (GRPO)</a></li>
 </ul>
 
@@ -239,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcode_model/alphacode2.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Feval/mbpp.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/code_model/alphacode2.ipynb" target="_blank"
+      <li><a href="../_sources/eval/mbpp.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,9 +340,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -351,27 +351,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>AlphaCode 2</h1>
+    <h1>MBPP</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-system">Overall System</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-and-fine-tuning">Policy and Fine-Tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">Filtering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scoring-model">Scoring Model</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -381,85 +365,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="alphacode-2">
-<h1>AlphaCode 2<a class="headerlink" href="#alphacode-2" title="Permalink to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This paper introduces AlphaCode 2, powered by Gemini. When evaluated on the
-same platform as the original AlphaCode, we found that AlphaCode 2 solved 1.7× more problems, and
-performed better than 85% of competition participants.</p>
-</div>
-<section id="overall-system">
-<h2>Overall System<a class="headerlink" href="#overall-system" title="Permalink to this heading">#</a></h2>
-<p>AlphaCode 2 relies on powerful Large Language Models, combined with an advanced search and
-reranking mechanism tailored for competitive programming. Its main
-components include:</p>
-<ul class="simple">
-<li><p>A family of policy models which generate code samples for each problem;</p></li>
-<li><p>A sampling mechanism that encourages generating a wide diversity of code samples to search over the space of possible programs;</p></li>
-<li><p>A filtering mechanism to remove code samples that do not comply with the problem description;</p></li>
-<li><p>A clustering algorithm that groups semantically similar code samples, allowing us to avoid redundancies;</p></li>
-<li><p>A scoring model which we use to surface the best candidate out of each of the 10 biggest code samples clusters.</p></li>
-</ul>
-<p><img alt="" src="../_images/alphacode2-1.png" /></p>
-<section id="policy-and-fine-tuning">
-<h3>Policy and Fine-Tuning<a class="headerlink" href="#policy-and-fine-tuning" title="Permalink to this heading">#</a></h3>
-<p>Our starting point is the Gemini Pro model, on which we apply two
-consecutive rounds of fine-tuning using GOLD as the training objective.</p>
-<p>First, we fine-tune on an updated version of the CodeContests dataset. We generate several
-fine-tuned models by varying hyperparameters, and end up with a family of fine-tuned models.
-Second, we conduct a few additional steps of fine-tuning on a different, higher-quality dataset.</p>
-<p>Relying on a family of policies instead of a single one allows us to maximize diversity, which
-remains key to tackling hard problems.</p>
-</section>
-<section id="sampling">
-<h3>Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h3>
-<p>Our sampling approach is close to that of AlphaCode. We generate up to a million code samples per
-problem, using a randomized temperature parameter for each sample to encourage diversity. We also
-randomize targeted metadata included in the prompt, such as the problem difficulty rating and its
-categorical tags.</p>
-<p>We split our sampling budget evenly across our family of fine-tuned models. While we sampled in
-Python and C++ for AlphaCode, we only used C++ samples for AlphaCode 2 as we found them to be
-higher quality.</p>
-</section>
-<section id="filtering">
-<h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this heading">#</a></h3>
-<p>Each competitive programming problem contains at least one public input/output test indicating how
-code samples should behave. We execute each code sample on the corresponding test input, and filter
-out all which do not produce the expected output and therefore could not have been correct.</p>
-</section>
-<section id="clustering">
-<h3>Clustering<a class="headerlink" href="#clustering" title="Permalink to this heading">#</a></h3>
-<p>After filtering, we are left with an average of 50 thousand candidates per problem, but we limit
-ourselves to 10 submissions. To further trim down candidates, we aggregate samples based on their
-runtime behavior: as in AlphaCode, we train a separate model to generate new test inputs for each
-problem, then execute the remaining samples on these new inputs. The produced outputs form a
-signature that we use to group similar code samples together into clusters. We then order the clusters
-according to their cardinality, and only keep the 10 largest.</p>
-<p>The point of clustering is to avoid redundancies: since code samples in the same cluster behave
-similarly, we can submit a single one per cluster to the online judge to obtain the best result.</p>
-</section>
-<section id="scoring-model">
-<h3>Scoring Model<a class="headerlink" href="#scoring-model" title="Permalink to this heading">#</a></h3>
-<p>We fine-tune a second Gemini Pro model to attribute an estimated correctness score between 0 and 1
-to code samples. Using this scoring model, we compute a score for each code sample in our remaining
-clusters; we then select the best candidate sample out of each cluster based on this predicted score to
-form our final list of 10 submissions.</p>
-</section>
-</section>
-<section id="evaluation">
-<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
-<p>We evaluated AlphaCode 2 on Codeforces. We selected
-12 recent contests with more than 8000 participants, either from division 2 or the harder division
-“1+2”. This makes for a total of 77 problems. For each problem, we sampled one million candidates
-and submitted up to 10 solutions selected and ordered according to the procedure detailed above,
-until either one correct solution was found, or we ran out of candidates.</p>
-<p><img alt="" src="../_images/alphacode2-2.png" /></p>
-<p>We evaluated the impact of increasing the amount of samples per problem. As was the case for
-AlphaCode, we find that performance increases roughly log-linearly with more samples. AlphaCode 2
-requires about 100 samples to reach the level of performance of AlphaCode with a million samples,
-making it over 10000× more sample efficient.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="mbpp">
+<h1>MBPP<a class="headerlink" href="#mbpp" title="Permalink to this heading">#</a></h1>
+<p>github: <a class="github reference external" href="https://github.com/google-research/google-research/tree/master/mbpp">google-research/google-research</a></p>
+<p>The Mostly Basic Programming Problems
+(MBPP) dataset contains 974 programming tasks, designed to be solvable by entry-level programmers. We asked crowd-sourcing participants to
+write a short problem statement, a single self-contained Python function solving the problem specified, and three test
+cases that check for semantic correctness of the function. Participants also provided a ground-truth solution that passes
+all three test cases.</p>
+<p><img alt="" src="../_images/mbpp.png" /></p>
+<p>We manually inspected, edited, and pruned a subset of the questions, yielding 426
+hand-verified questions, which we refer to as the edited dataset. For each question in the edited dataset, we ensured
+it had a standard Python function signature, that it was unambiguous to a human, and that its test cases accurately
+reflected the text description.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -475,7 +393,7 @@ making it over 10000× more sample efficient.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./code_model"
+            path: "./eval"
         },
         predefinedOutput: true
     }
@@ -492,34 +410,30 @@ making it over 10000× more sample efficient.</p>
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../dataset/magic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Magicoder</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="taco.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TACO</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-system">Overall System</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-and-fine-tuning">Policy and Fine-Tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">Filtering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scoring-model">Scoring Model</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

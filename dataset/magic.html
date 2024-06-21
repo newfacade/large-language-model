@@ -65,6 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'dataset/magic';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MBPP" href="../eval/mbpp.html" />
+    <link rel="prev" title="WizardCoder" href="wizard.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,8 +161,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../base_model/llama3.html">Llama3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Magicoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eval/mbpp.html">MBPP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eval/taco.html">TACO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rlhf/grpo.html">Group Relative Policy Optimization (GRPO)</a></li>
 </ul>
 
@@ -358,6 +366,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oss-instruct-instruction-tuning-from-open-source">OSS-INSTRUCT: Instruction Tuning from Open Source</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">Implementation Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
 </ul>
             </nav>
         </div>
@@ -379,6 +388,7 @@ trained on 75K synthetic instruction data using OSS-INSTRUCT, a novel approach
 to enlightening LLMs with open-source code snippets to generate high-quality
 instruction data for code.</p>
 </div>
+<p>paper: <a class="reference external" href="https://arxiv.org/pdf/2312.02120">https://arxiv.org/pdf/2312.02120</a></p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>To further push the boundaries
@@ -394,10 +404,8 @@ complexity of seed code instructions (Code Alpaca in this case).</p>
 an LLM, they rely on a narrow range of predefined tasks or heuristics under the hood.</p>
 <p><img alt="" src="../_images/magic1.png" /></p>
 <p>OSS-INSTRUCT leverages a powerful LLM to automatically
-generate new coding problems by drawing inspiration from any random code snippets collected from
-the open source. Thanks
-to the “infinite” real-world open-source code, OSS-INSTRUCT can directly produce diverse, realistic,
-and controllable code instructions by providing distinct seed code snippets. In the end, we generate
+generate new coding problems by <strong>drawing inspiration from any random code snippets collected from
+the open source</strong>. In the end, we generate
 75K synthetic data to finetune CODELLAMA-PYTHON-7B, resulting in Magicoder-CL. While being
 simple and effective, OSS-INSTRUCT is orthogonal to existing data generation methods, and they
 can be combined to further push the boundaries of the models’ coding capabilities. Therefore, we
@@ -407,7 +415,7 @@ MagicoderS-CL.</p>
 <section id="oss-instruct-instruction-tuning-from-open-source">
 <h2>OSS-INSTRUCT: Instruction Tuning from Open Source<a class="headerlink" href="#oss-instruct-instruction-tuning-from-open-source" title="Permalink to this heading">#</a></h2>
 <p>OSS-INSTRUCT is powered by seed code snippets that can be easily collected from open source. In
-this work, we directly adopt <strong>starcoderdata</strong> as our seed corpus, a filtered version of The Stack dataset that StarCoder is trained on.</p>
+this work, we directly adopt <code class="docutils literal notranslate"><span class="pre">starcoderdata</span></code> as our seed corpus, a filtered version of The Stack dataset that StarCoder is trained on.</p>
 <p>For each code document from the corpus, we randomly
 extract 1–15 consecutive lines as the seed snippet for the model to gain inspiration from and produce
 coding problems. In total, we collected 80K initial seed snippets from 80K code documents. Then, each collected seed code snippet is applied to the prompt template shown below, which a
@@ -416,15 +424,19 @@ teacher model takes as input and outputs both a coding problem and its solution.
 </section>
 <section id="implementation-details">
 <h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h2>
-<p><strong>Data generation</strong> We use gpt-3.5-turbo-1106 as the foundation model to do OSS-INSTRUCT
-due to its high cost-effectiveness. We randomly extract 1–15 lines from each selected code document
-from starcoderdata and let gpt-3.5-turbo-1106 imagine a self-contained coding problem and a
-correct solution. Given the numerous seed code snippets, we perform greedy decoding to maximize
+<p><strong>Data generation</strong> We use <code class="docutils literal notranslate"><span class="pre">gpt-3.5-turbo-1106</span></code> as the foundation model to do OSS-INSTRUCT. We perform greedy decoding to maximize
 the consistency between the generated problems and solutions.</p>
 <p><strong>Training</strong> We employ CODELLAMA-PYTHON-7B and DeepSeek-Coder-Base 6.7B as the base
 LLMs. To obtain Magicoder series, we first finetune the base models on about 75K synthetic data
-generated through OSS-INSTRUCT for 2 epochs. We set the initial learning rate at 5e-5 with
-15 warmup steps and a linear scheduler.</p>
+generated through OSS-INSTRUCT. To obtain MagicoderS,
+we continue to finetune Magicoder models with the <code class="docutils literal notranslate"><span class="pre">evol-codealpaca-v1</span></code> dataset, an open-source
+Evol-Instruct implementation containing about 110K samples.</p>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<p>Evaluation powered by <code class="docutils literal notranslate"><span class="pre">EvalPlus</span></code>.</p>
+<p><img alt="" src="../_images/magicoder1.png" /></p>
+<p><img alt="" src="../_images/magicoder2.png" /></p>
 </section>
 </section>
 
@@ -458,6 +470,24 @@ generated through OSS-INSTRUCT for 2 epochs. We set the initial learning rate at
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="wizard.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">WizardCoder</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../eval/mbpp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MBPP</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -476,6 +506,7 @@ generated through OSS-INSTRUCT for 2 epochs. We set the initial learning rate at
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oss-instruct-instruction-tuning-from-open-source">OSS-INSTRUCT: Instruction Tuning from Open Source</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">Implementation Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
 </ul>
   </nav></div>
 

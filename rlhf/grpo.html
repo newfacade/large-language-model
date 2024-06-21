@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'rlhf/grpo';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Llama3" href="../base_model/llama3.html" />
+    <link rel="prev" title="TACO" href="../eval/taco.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,6 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../base_model/llama3.html">Llama3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/wizard.html">WizardCoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset/magic.html">Magicoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eval/mbpp.html">MBPP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eval/taco.html">TACO</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Group Relative Policy Optimization (GRPO)</a></li>
 </ul>
 
@@ -479,13 +485,13 @@ Since:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-\mathbb{E}_{x\sim P}\left[\frac{Q(x)}{P(x)} - 1\right] =&amp; \sum_{x}P(x)(\frac{Q(x)}{P(x)} - 1)\\
+\mathbb{E}_{x\sim P}\left[\frac{Q(x)}{P(x)} - 1\right] =&amp; \sum_{x}P(x)\left(\frac{Q(x)}{P(x)} - 1\right)\\
 =&amp; \sum_{x}Q(x)- \sum_{x}P(x) \\
 =&amp; 1 - 1 \\
 =&amp; 0
 \end{aligned}
 \end{split}\]</div>
-<p>So <span class="math notranslate nohighlight">\(\mathbb{E}_{x\sim P}\left[\frac{Q(x)}{P(x)} - \log\frac{Q(x)}{P(x)}1\right]\)</span> is an unbiased estimator of the KL divergence.</p>
+<p>So <span class="math notranslate nohighlight">\(\mathbb{E}_{x\sim P}\left[\frac{Q(x)}{P(x)} - \log\frac{Q(x)}{P(x)} - 1\right]\)</span> is an unbiased estimator of the KL divergence.</p>
 </div>
 </section>
 <section id="outcome-supervision-rl-with-grpo">
@@ -582,12 +588,12 @@ new reward model.</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../base_model/llama3.html"
+       href="../eval/taco.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Llama3</p>
+        <p class="prev-next-title">TACO</p>
       </div>
     </a>
 </div>
