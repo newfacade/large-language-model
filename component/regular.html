@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Regular Expressions with the re Module &#8212; My sample book</title>
   
@@ -15,53 +14,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'component/regular';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,28 +70,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,12 +108,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
@@ -149,7 +151,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">My sample book</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -161,13 +174,22 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../base_model/llama3.html">Llama3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base_model/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/wizard.html">WizardCoder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset/magic.html">Magicoder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eval/mbpp.html">MBPP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eval/taco.html">TACO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methodology/non-determin.html">Evaluation of LLMs Should Not Ignore Non-Determinism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rlhf/dpo.html">DPO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rlhf/grpo.html">Group Relative Policy Optimization (GRPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rlhf/rlcd.html">RLCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rlhf/judge.html">Aligning Language Models with Judgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rlhf/secret-rm.html">Secrets of RLHF in Large Language Models: Reward Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rlhf/self-reward.html">Self-Rewarding Language Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rlhf/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rlhf/armo.html">ArmoRM-MoE</a></li>
 </ul>
 
     </div>
@@ -183,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -192,14 +214,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -321,6 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -331,6 +354,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -338,9 +362,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -393,20 +417,20 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="regular-expressions-with-the-re-module">
-<h1>Regular Expressions with the re Module<a class="headerlink" href="#regular-expressions-with-the-re-module" title="Permalink to this heading">#</a></h1>
+<h1>Regular Expressions with the re Module<a class="headerlink" href="#regular-expressions-with-the-re-module" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Using regular expressions, you specify the rules for the set of possible strings that you want to match; this set might contain English sentences, or e-mail addresses, or TeX commands, or anything you like. You can then ask questions such as “Does this string match the pattern?”, or “Is there a match for the pattern anywhere in this string?”. You can also use REs to modify a string or to split it apart in various ways.<br><br>
 The regular expression language is relatively small and restricted, so not all possible string processing tasks can be done using regular expressions. There are also tasks that can be done with regular expressions, but the expressions turn out to be very complicated. In these cases, you may be better off writing Python code to do the processing; while Python code will be slower than an elaborate regular expression, it will also probably be more understandable.</p>
 </div>
 <section id="simple-patterns">
-<h2>Simple Patterns<a class="headerlink" href="#simple-patterns" title="Permalink to this heading">#</a></h2>
+<h2>Simple Patterns<a class="headerlink" href="#simple-patterns" title="Link to this heading">#</a></h2>
 <p>We’ll start by learning about the simplest possible regular expressions. Since regular expressions are used to operate on strings, we’ll begin with the most common task: matching characters.</p>
 <section id="matching-characters">
-<h3>Matching Characters<a class="headerlink" href="#matching-characters" title="Permalink to this heading">#</a></h3>
+<h3>Matching Characters<a class="headerlink" href="#matching-characters" title="Link to this heading">#</a></h3>
 <p>Most letters and characters will simply match themselves. For example, the regular expression <code class="docutils literal notranslate"><span class="pre">test</span></code> will match the string <code class="docutils literal notranslate"><span class="pre">test</span></code> exactly.</p>
 <p>There are exceptions to this rule; some characters are special metacharacters, and don’t match themselves. Instead, they signal that some out-of-the-ordinary thing should be matched, or they affect other portions of the RE by repeating them or changing their meaning. Here’s a complete list of the metacharacters; their meanings will be discussed later.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. ^ $ * + ? { } [ ] \ | ( )
@@ -428,13 +452,13 @@ The regular expression language is relatively small and restricted, so not all p
 <p>The final metacharacter in this section is <code class="docutils literal notranslate"><span class="pre">.</span></code>. It matches anything except a newline character, and there’s an alternate mode (re.DOTALL) where it will match even a newline. <code class="docutils literal notranslate"><span class="pre">.</span></code> is often used where you want to match “any character”.</p>
 </section>
 <section id="repeating-things">
-<h3>Repeating Things<a class="headerlink" href="#repeating-things" title="Permalink to this heading">#</a></h3>
+<h3>Repeating Things<a class="headerlink" href="#repeating-things" title="Link to this heading">#</a></h3>
 <p>Being able to match varying sets of characters is the first thing regular expressions can do that isn’t already possible with the methods available on strings. Another capability is that you can specify that portions of the RE must be repeated a certain number of times.</p>
 <p>The first metacharacter for repeating things that we’ll look at is <code class="docutils literal notranslate"><span class="pre">*</span></code>. <code class="docutils literal notranslate"><span class="pre">*</span></code> doesn’t match the literal character <code class="docutils literal notranslate"><span class="pre">'*'</span></code>; instead, it specifies that the previous character can be matched zero or more times, instead of exactly once.</p>
 <p>For example, <code class="docutils literal notranslate"><span class="pre">ca*t</span></code> will match ‘ct’ (0 ‘a’ characters), ‘cat’ (1 ‘a’), ‘caaat’ (3 ‘a’ characters), and so forth.</p>
 <p>Repetitions such as <code class="docutils literal notranslate"><span class="pre">*</span></code> are greedy; when repeating a RE, the matching engine will try to repeat it as many times as possible. If later portions of the pattern don’t match, the matching engine will then back up and try again with fewer repetitions.</p>
 <p>A step-by-step example will make this more obvious. Let’s consider the expression <code class="docutils literal notranslate"><span class="pre">a[bcd]*b</span></code>. This matches the letter ‘a’, zero or more letters from the class <code class="docutils literal notranslate"><span class="pre">[bcd]</span></code>, and finally ends with a ‘b’. Now imagine matching this RE against the string ‘abcbd’.</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Step</p></th>
 <th class="head"><p>Matched</p></th>
@@ -472,6 +496,7 @@ The regular expression language is relatively small and restricted, so not all p
 </tr>
 </tbody>
 </table>
+</div>
 <p>The end of the RE has now been reached, and it has matched <code class="docutils literal notranslate"><span class="pre">'abcb'</span></code>. This demonstrates how the matching engine goes as far as it can at first, and if no match is found it will then progressively back up and retry the rest of the RE again and again. It will back up until it has tried zero matches for <code class="docutils literal notranslate"><span class="pre">[bcd]*</span></code>, and if that subsequently fails, the engine will conclude that the string doesn’t match the RE at all.</p>
 <p>Another repeating metacharacter is <code class="docutils literal notranslate"><span class="pre">+</span></code>, which matches one or more times.</p>
 <p>There are two more repeating operators or quantifiers. The question mark character, <code class="docutils literal notranslate"><span class="pre">?</span></code>, matches either once or zero times; you can think of it as marking something as being optional. For example, <code class="docutils literal notranslate"><span class="pre">home-?brew</span></code> matches either ‘homebrew’ or ‘home-brew’.</p>
@@ -482,9 +507,9 @@ The regular expression language is relatively small and restricted, so not all p
 </section>
 </section>
 <section id="using-regular-expressions">
-<h2>Using Regular Expressions<a class="headerlink" href="#using-regular-expressions" title="Permalink to this heading">#</a></h2>
+<h2>Using Regular Expressions<a class="headerlink" href="#using-regular-expressions" title="Link to this heading">#</a></h2>
 <section id="compiling-regular-expressions">
-<h3>Compiling Regular Expressions<a class="headerlink" href="#compiling-regular-expressions" title="Permalink to this heading">#</a></h3>
+<h3>Compiling Regular Expressions<a class="headerlink" href="#compiling-regular-expressions" title="Link to this heading">#</a></h3>
 <p>Regular expressions are compiled into pattern objects, which have methods for various operations such as searching for pattern matches or performing string substitutions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -512,10 +537,10 @@ The regular expression language is relatively small and restricted, so not all p
 <p>The RE is passed to re.compile() as a string. REs are handled as strings because regular expressions aren’t part of the core Python language, and no special syntax was created for expressing them. The re module is simply a C extension module included with Python, just like the socket or zlib modules.</p>
 </section>
 <section id="the-backslash-plague">
-<h3>The Backslash Plague<a class="headerlink" href="#the-backslash-plague" title="Permalink to this heading">#</a></h3>
+<h3>The Backslash Plague<a class="headerlink" href="#the-backslash-plague" title="Link to this heading">#</a></h3>
 <p>As stated earlier, regular expressions use the backslash character (<code class="docutils literal notranslate"><span class="pre">'\'</span></code>) to indicate special forms or to allow special characters to be used without invoking their special meaning. This conflicts with Python’s usage of the same character for the same purpose in string literals.</p>
 <p>Let’s say you want to write a RE that matches the string <code class="docutils literal notranslate"><span class="pre">\section</span></code>, you must escape any backslashes and other metacharacters by preceding them with a backslash, resulting in the string <code class="docutils literal notranslate"><span class="pre">\\section</span></code>. The resulting string that must be passed to re.compile() must be <code class="docutils literal notranslate"><span class="pre">\\section</span></code>. However, to express this as a Python string literal, both backslashes must be escaped again.</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Characters</p></th>
 <th class="head"><p>Stage</p></th>
@@ -533,6 +558,7 @@ The regular expression language is relatively small and restricted, so not all p
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\\\</span><span class="s2">section&quot;</span><span class="p">)</span>
@@ -547,7 +573,7 @@ The regular expression language is relatively small and restricted, so not all p
 </div>
 <p>In short, to match a literal backslash, one has to write <code class="docutils literal notranslate"><span class="pre">'\\\\'</span></code> as the RE string. In REs that feature backslashes repeatedly, this leads to lots of repeated backslashes and makes the resulting strings difficult to understand.</p>
 <p>The solution is to use Python’s raw string notation for regular expressions; backslashes are not handled in any special way in a string literal prefixed with <code class="docutils literal notranslate"><span class="pre">'r'</span></code>, so <code class="docutils literal notranslate"><span class="pre">r&quot;\n&quot;</span></code> is a two-character string containing <code class="docutils literal notranslate"><span class="pre">'\'</span></code> and <code class="docutils literal notranslate"><span class="pre">'n'</span></code>, while <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> is a one-character string containing a newline.</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Regular String</p></th>
 <th class="head"><p>Raw string</p></th>
@@ -565,11 +591,12 @@ The regular expression language is relatively small and restricted, so not all p
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="performing-matches">
-<h3>Performing Matches<a class="headerlink" href="#performing-matches" title="Permalink to this heading">#</a></h3>
+<h3>Performing Matches<a class="headerlink" href="#performing-matches" title="Link to this heading">#</a></h3>
 <p>Once you have an object representing a compiled regular expression, what do you do with it? Pattern objects have several methods and attributes. Only the most significant ones will be covered here.</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Method/Attribute</p></th>
 <th class="head"><p>Purpose</p></th>
@@ -590,6 +617,7 @@ The regular expression language is relatively small and restricted, so not all p
 </tr>
 </tbody>
 </table>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">match()</span></code> and <code class="docutils literal notranslate"><span class="pre">search()</span></code> return None if no match can be found. If they’re successful, a match object instance is returned, containing information about the match: where it starts and ends, the substring it matched, and more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -628,7 +656,7 @@ The regular expression language is relatively small and restricted, so not all p
 </div>
 </div>
 <p>Now you can query the match object for information about the matching string. Match object instances also have several methods and attributes; the most important ones are:</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Method/Attribute</p></th>
 <th class="head"><p>Purpose</p></th>
@@ -649,6 +677,7 @@ The regular expression language is relatively small and restricted, so not all p
 </tr>
 </tbody>
 </table>
+</div>
 <p>Trying these methods will soon clarify their meaning:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -780,7 +809,7 @@ The regular expression language is relatively small and restricted, so not all p
 </div>
 </section>
 <section id="module-level-functions">
-<h3>Module-Level Functions<a class="headerlink" href="#module-level-functions" title="Permalink to this heading">#</a></h3>
+<h3>Module-Level Functions<a class="headerlink" href="#module-level-functions" title="Link to this heading">#</a></h3>
 <p>You don’t have to create a pattern object and call its methods; the <code class="docutils literal notranslate"><span class="pre">re</span></code> module also provides top-level functions called <code class="docutils literal notranslate"><span class="pre">match()</span></code>, <code class="docutils literal notranslate"><span class="pre">search()</span></code>, <code class="docutils literal notranslate"><span class="pre">findall()</span></code>, and so forth.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,10 +837,10 @@ The regular expression language is relatively small and restricted, so not all p
 </div>
 </section>
 <section id="compilation-flags">
-<h3>Compilation Flags<a class="headerlink" href="#compilation-flags" title="Permalink to this heading">#</a></h3>
+<h3>Compilation Flags<a class="headerlink" href="#compilation-flags" title="Link to this heading">#</a></h3>
 <p>Compilation flags let you modify some aspects of how regular expressions work. Flags are available in the re module under two names, a long name such as <code class="docutils literal notranslate"><span class="pre">IGNORECASE</span></code> and a short, one-letter form such as <code class="docutils literal notranslate"><span class="pre">I</span></code>.</p>
 <p>Here’s a table of some available flags.</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Flag</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -829,13 +858,14 @@ The regular expression language is relatively small and restricted, so not all p
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="more-pattern-power">
-<h2>More Pattern Power<a class="headerlink" href="#more-pattern-power" title="Permalink to this heading">#</a></h2>
+<h2>More Pattern Power<a class="headerlink" href="#more-pattern-power" title="Link to this heading">#</a></h2>
 <p>So far we’ve only covered a part of the features of regular expressions. In this section, we’ll cover some new metacharacters, and how to use groups to retrieve portions of the text that was matched.</p>
 <section id="more-metacharacters">
-<h3>More Metacharacters<a class="headerlink" href="#more-metacharacters" title="Permalink to this heading">#</a></h3>
+<h3>More Metacharacters<a class="headerlink" href="#more-metacharacters" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">|</span></code> The “or” operator. If A and B are regular expressions, A|B will match any string that matches either A or B.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> Matches at the beginning of lines. Unless the MULTILINE flag has been set, this will only match at the beginning of the string.</p></li>
@@ -970,7 +1000,7 @@ The regular expression language is relatively small and restricted, so not all p
 </div>
 </section>
 <section id="grouping">
-<h3>Grouping<a class="headerlink" href="#grouping" title="Permalink to this heading">#</a></h3>
+<h3>Grouping<a class="headerlink" href="#grouping" title="Link to this heading">#</a></h3>
 <p>Frequently you need to obtain more information than just whether the RE matched or not. Regular expressions are often used to dissect strings by writing a RE divided into several subgroups which match different components of interest.</p>
 <p>Groups are marked by the <code class="docutils literal notranslate"><span class="pre">'('</span></code>, <code class="docutils literal notranslate"><span class="pre">')'</span></code> metacharacters.</p>
 <div class="cell docutils container">
@@ -1114,9 +1144,9 @@ The regular expression language is relatively small and restricted, so not all p
 </section>
 </section>
 <section id="modifying-strings">
-<h2>Modifying Strings<a class="headerlink" href="#modifying-strings" title="Permalink to this heading">#</a></h2>
+<h2>Modifying Strings<a class="headerlink" href="#modifying-strings" title="Link to this heading">#</a></h2>
 <p>Up to this point, we’ve simply performed searches against a static string. Regular expressions are also commonly used to modify strings in various ways, using the following pattern methods:</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Method/Attribute</p></th>
 <th class="head"><p>Purpose</p></th>
@@ -1134,8 +1164,9 @@ The regular expression language is relatively small and restricted, so not all p
 </tr>
 </tbody>
 </table>
+</div>
 <section id="splitting-string">
-<h3>Splitting String<a class="headerlink" href="#splitting-string" title="Permalink to this heading">#</a></h3>
+<h3>Splitting String<a class="headerlink" href="#splitting-string" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">split()</span></code> method is similar to the <code class="docutils literal notranslate"><span class="pre">split()</span></code> method of strings but provides much more generality in the delimiters that you can split by.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1198,7 +1229,7 @@ The regular expression language is relatively small and restricted, so not all p
 </div>
 </section>
 <section id="search-and-replace">
-<h3>Search and Replace<a class="headerlink" href="#search-and-replace" title="Permalink to this heading">#</a></h3>
+<h3>Search and Replace<a class="headerlink" href="#search-and-replace" title="Link to this heading">#</a></h3>
 <p>Another common task is to find all the matches for a pattern, and replace them with a different string. The <code class="docutils literal notranslate"><span class="pre">sub()</span></code> method takes a replacement value, and the string to be processed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1295,8 +1326,8 @@ The regular expression language is relatively small and restricted, so not all p
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -1306,6 +1337,7 @@ The regular expression language is relatively small and restricted, so not all p
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1357,9 +1389,10 @@ By The Jupyter Book Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1383,8 +1416,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
